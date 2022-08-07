@@ -1,0 +1,83 @@
+
+        <form (submit)="createEvento(form)" #form="ngForm" class="mt-10" enctype="multipart/form-data">
+          <mat-grid-list cols="1" rowHeight="500px">
+            <mat-grid-tile>
+              <div class="example-container">
+                <mat-form-field appearance="fill" class="width-100">
+                  <mat-label>Nombre</mat-label>
+                  <input matInput name="name" [(ngModel)]="eventoDetails.name">
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="width-100">
+                  <mat-label>Latitud</mat-label>
+                  <input matInput name="lat" type="number" step="any" [(ngModel)]="eventoDetails.lat">
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="width-100">
+                  <mat-label>Longitud</mat-label>
+                  <input matInput name="lng"  type="number" step="any" [(ngModel)]="eventoDetails.lng">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill" class="width-25">
+                  <mat-label>Tipo de lugar</mat-label>
+                  <mat-select name="type_site" [(ngModel)]="eventoDetails.type_site">
+                    <mat-option value=1>Bar</mat-option>
+                    <mat-option value=2>Casa/Departamento</mat-option>
+                    <mat-option value=3>Boliche</mat-option>
+                    <mat-option value=4>Plaza</mat-option>
+                    <mat-option value=5>Salón</mat-option>
+                    <mat-option value=6>Playa</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="width-25 ml-1">
+                  <mat-label>Tipo de evento</mat-label>
+                  <mat-select name="type_event"[(ngModel)]="eventoDetails.type_event">
+                    <mat-option value=1>Jodita</mat-option>
+                    <mat-option value=2>Previa</mat-option>
+                    <mat-option value=3>Juntada</mat-option>
+                    <mat-option value=4>Tour</mat-option>
+                    <mat-option value=5>Reunión</mat-option>
+                    <mat-option value=6>Exposición</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="width-25 ml-1">
+                  <mat-label>Tipo de música</mat-label>
+                  <mat-select name="type_music" [(ngModel)]="eventoDetails.type_music">
+                    <mat-option value=1 >Electrónica</mat-option>
+                    <mat-option value=2>Cachengue</mat-option>
+                    <mat-option value=3>Cumbia</mat-option>
+                    <mat-option value=4>Variado</mat-option>
+                    <mat-option value=5>Sin música</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill" class="width-100">
+                  <mat-label>Descipción y requisitos</mat-label>
+                  <textarea name="description" matInput maxlength="500" [(ngModel)]="eventoDetails.description"></textarea>
+                </mat-form-field>
+                <br>
+               <!-- <mat-form-field appearance="fill">
+                  <mat-label>Elije una fecha</mat-label>
+                  <input matInput name="date" [matDatepicker]="picker" [(ngModel)]="eventoDetails.date">
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>-->
+                <br>
+                <label>Privacidad:</label>
+                <br>
+                <br>
+                <mat-radio-group aria-label="Select an option" name="privacy" [(ngModel)]="eventoDetails.privacy">
+                  <mat-radio-button value=false>Público</mat-radio-button>
+                  <mat-radio-button class="example-radio-button" value=true>Privado</mat-radio-button>
+                </mat-radio-group>
+                <div class="col-md-6">
+                  <input type="file" (change)="onFileSelected($event)" multiple>
+
+                </div>
+                <button type="submit"
+                >
+                  Crear
+                </button>
+              </div>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </form>
