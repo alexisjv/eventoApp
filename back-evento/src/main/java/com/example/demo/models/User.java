@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -23,6 +24,9 @@ public class User {
     @OneToOne
     @JoinColumn(name = "role_id")
     private Role role;
+
+    @OneToMany(mappedBy = "host_id", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Evento> hostEventos;
 
     public User(String username, String firstname, String surname, String email, String password, Date birthday) {
         this.username = username;

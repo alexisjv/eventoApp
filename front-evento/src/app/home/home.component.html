@@ -10,7 +10,7 @@
     </div>
     <div class="row">
       <div *ngFor="let evento of eventos | async"  class="col-sm-12 col-md-6 col-lg-4 mb-4"><div class="card text-white card-has-bg click-col evento" style="background-image: url('http://localhost:8080/api/eventos/loadImage/{{evento.coverImage}}')">
-        <img class="card-img d-none" src="{{evento.coverImage}}" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
+        <img class="card-img d-none" src="http://localhost:8080/api/eventos/loadImage/{{evento.coverImage}}" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
         <div class="card-img-overlay d-flex flex-column">
           <div class="card-body"><!--
             <small class="card-meta mb-2">{{evento.category}}</small>-->
@@ -31,12 +31,12 @@
       </div>
 
     </div>
-    <google-map width="1300" height="600" [center]="position" style="text-align: center">
+    <google-map width="1100" height="600" [center]="position" style="text-align: center">
 
 
       <map-marker  *ngFor="let evento of eventos | async" [position]="{lat: evento.lat, lng: evento.lng}"
                   [label] = "evento.name"
-                  [title] = "evento.name">
+                  [title] = "evento.name" (click)="alert()">
 
       </map-marker>
     </google-map>

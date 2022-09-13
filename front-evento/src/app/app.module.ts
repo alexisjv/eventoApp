@@ -22,13 +22,15 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatRadioModule} from "@angular/material/radio";
 import {FormsModule} from "@angular/forms";
 import {MatGridListModule} from "@angular/material/grid-list";
+import { CreateUserComponent } from './user/create-user/create-user.component';
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    CreateEventoComponent
+    CreateEventoComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,

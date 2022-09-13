@@ -10,14 +10,21 @@ export class EventoService {
   constructor(private http: HttpClient) {
   }
 
-  url = '/api/eventos/';
+  url = 'http://localhost:8080/api/eventos/';
 
   getAllEventos(){
     return this.http.get<Evento[]>(this.url + "getAll");
   }
 
-  createEvento(image: FormData){
-    return this.http.post<Evento>(this.url + "create", image);
+  createEvento(formData: FormData){
+    this.http.post(this.url + "create", formData, { observe: 'response' })
+      .subscribe((response) => {
+        if (response.status === 200) {
+          alert("¡Evento creado!")
+        } else {
+          alert('Hubo un error')
+        }
+      });
   }
 
 

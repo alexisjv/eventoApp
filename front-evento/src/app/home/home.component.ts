@@ -44,9 +44,13 @@ export class HomeComponent implements OnInit {
     this.eventos = this.eventoService.getNearlyEventos(formData)
   }
 
+  alert(){
+    console.log("Hola")
+  }
+
 
   label = {
-    color: 'black',
+    color: 'red',
     text: 'Usted está aquí'
   }
 }

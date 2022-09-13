@@ -1,8 +1,8 @@
-export class Evento{
-  id: number;
+export interface User{
   username: String;
   firstname: String;
-  surnamec: String;
-  date: Date;
+  surname: String;
+  email: String;
+  password: String;
 
 }

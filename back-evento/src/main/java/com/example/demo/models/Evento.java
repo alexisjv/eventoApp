@@ -20,11 +20,14 @@ public class Evento {
     private Integer type_site;
     private Integer type_event;
     private String description;
-    private LocalDate date;
+    private Date date;
     private Boolean privacy;
     private String coverImage;
     private Double lat;
     private Double lng;
+    @ManyToOne
+    @JoinColumn(name = "host_id")
+    private User host_id;
 
     @OneToMany(mappedBy = "event_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Image> images;

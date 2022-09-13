@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Evento} from "../../models/Evento";
 import {EventoService} from "../../services/evento.service";
-import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 
 @Component({
@@ -39,6 +38,7 @@ export class CreateEventoComponent implements OnInit {
     console.log(this.selectedFile);
   }
 
+
   createEvento(form: NgForm) {
 
     const formData = new FormData();
@@ -54,17 +54,7 @@ export class CreateEventoComponent implements OnInit {
     formData.append("privacy", String(this.eventoDetails.privacy))
     formData.append("lat", String(this.eventoDetails.lat))
     formData.append("lng", String(this.eventoDetails.lng))
-    /*formData.append("date", String(this.eventoDetails.date))*/
 
-
-
-    this.http.post('http://192.168.0.18:8080/api/eventos/create', formData, { observe: 'response' })
-      .subscribe((response) => {
-        if (response.status === 200) {
-          alert("¡Evento creado!")
-        } else {
-          alert('Hubo un error')
-        }
-      });
+    this.eventoService.createEvento(formData)
   }
 }

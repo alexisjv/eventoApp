@@ -1,5 +1,4 @@
 export interface Evento{
-  /*date: Date;*/
   description: string;
   id: number;
   name: string;

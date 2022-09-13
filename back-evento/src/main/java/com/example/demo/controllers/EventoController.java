@@ -7,13 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/eventos")
-@CrossOrigin
 public class EventoController {
 
     private EventoService eventoService;
@@ -36,7 +37,7 @@ public class EventoController {
             @RequestParam("imageFile") MultipartFile[] files,
             @RequestParam("lat") Double lat,
             @RequestParam("lng") Double lng)
-            {
+    {
         System.out.println("llegue aca");
         List<String> images = fileService.upload(files);
         Evento evento = new Evento();
