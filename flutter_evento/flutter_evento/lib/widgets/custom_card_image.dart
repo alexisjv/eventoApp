@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_evento/screens/evento_detail.dart';
 
 class CustomCardImage extends StatelessWidget {
   final String imageUrl;
+  final String title;
   final Icon icon;
   final String? name;
 
   const CustomCardImage(
-      {super.key, required this.imageUrl, required this.icon, this.name});
+      {super.key,
+      required this.imageUrl,
+      required this.icon,
+      this.name,
+      required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +40,27 @@ class CustomCardImage extends StatelessWidget {
                 ),
                 Column(
                   children: [
+                    Text(
+                      title,
+                      style: const TextStyle(color: Colors.indigo),
+                    )
+                  ],
+                ),
+                Column(
+                  children: [
                     Row(
                       children: [
                         TextButton(
-                            onPressed: () {}, child: const Text('Detalles')),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => EventoDetail(
+                                            imageUrl: imageUrl,
+                                            title: title,
+                                          )));
+                            },
+                            child: const Text('Detalles')),
                         TextButton(
                             onPressed: () {}, child: const Text('Asistir'))
                       ],

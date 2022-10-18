@@ -1,12 +1,15 @@
+import 'dart:io';
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_evento/themes/app_theme.dart';
 
 class AlertScreen extends StatelessWidget {
   const AlertScreen({Key? key}) : super(key: key);
 
-  void displayDialog(BuildContext context) {
+// alerta para Android
+  void displayDialogAndroid(BuildContext context) {
     showDialog(
         context: context,
         builder: (context) {
@@ -14,6 +17,39 @@ class AlertScreen extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadiusDirectional.circular(15)),
             elevation: 5,
+            title: const Text(
+              'Creado por Alexis con Flutter',
+              style: TextStyle(fontSize: 15),
+              textAlign: TextAlign.center,
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                FlutterLogo(
+                  size: 100,
+                ),
+              ],
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Cancelar',
+                      style: TextStyle(color: Colors.red))),
+              TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Ok',
+                      style: TextStyle(color: AppTheme.primary)))
+            ],
+          );
+        });
+  }
+
+// alerta para IOS
+  void displayDialogIOS(BuildContext context) {
+    showCupertinoDialog(
+        context: context,
+        builder: (context) {
+          return CupertinoAlertDialog(
             title: const Text(
               'Creado por Alexis con Flutter',
               textAlign: TextAlign.center,
@@ -26,6 +62,16 @@ class AlertScreen extends StatelessWidget {
                 ),
               ],
             ),
+            actions: [
+              TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Cancelar',
+                      style: TextStyle(color: Colors.red))),
+              TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Ok',
+                      style: TextStyle(color: AppTheme.primary)))
+            ],
           );
         });
   }
@@ -51,7 +97,9 @@ class AlertScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 16),
                     ),
                   ),
-                  onPressed: () => displayDialog(context),
+                  onPressed: () => Platform.isAndroid
+                      ? displayDialogAndroid(context)
+                      : displayDialogIOS(context),
                 ),
               ),
             )),
