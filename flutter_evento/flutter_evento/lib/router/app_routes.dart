@@ -1,4 +1,5 @@
 import 'package:flutter_evento/models/models.dart';
+import 'package:flutter_evento/screens/loading_screen.dart';
 
 import '../screens/screens.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ class AppRoutes {
     MenuOption(
         route: 'card',
         name: 'Buscar eventos',
-        screen: const CardScreen(),
+        screen: const LoadingScreen(),
         icon: Icons.search),
     MenuOption(
         route: 'listView1',

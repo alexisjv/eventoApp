@@ -31,7 +31,7 @@ class CustomCardImage extends StatelessWidget {
             fadeInDuration: const Duration(milliseconds: 300),
           ),
           Container(
-            padding: const EdgeInsets.only(right: 5, left: 5),
+            padding: const EdgeInsets.only(right: 10, left: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -61,8 +61,6 @@ class CustomCardImage extends StatelessWidget {
                                           )));
                             },
                             child: const Text('Detalles')),
-                        TextButton(
-                            onPressed: () {}, child: const Text('Asistir'))
                       ],
                     )
                   ],

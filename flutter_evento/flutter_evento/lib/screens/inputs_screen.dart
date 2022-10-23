@@ -21,7 +21,7 @@ class InputsScreen extends StatelessWidget {
                 hintText: 'Nombre del evento',
                 labelText: 'Nombre',
                 suffixIcon: Icon(
-                  Icons.post_add_rounded,
+                  Icons.title,
                 )),
             onChanged: (value) {
               print('value: $value');
@@ -50,7 +50,83 @@ class InputsScreen extends StatelessWidget {
               return value.length < 3 ? 'Mínimo de 3 letras' : null;
             },
             autovalidateMode: AutovalidateMode.onUserInteraction,
-          )
+          ),
+          TextFormField(
+            autofocus: true,
+            initialValue: '',
+            textCapitalization: TextCapitalization.words,
+            decoration: const InputDecoration(
+                hintText: 'Indicar ubicación',
+                labelText: 'Lugar',
+                suffixIcon: Icon(
+                  Icons.location_on,
+                )),
+            onChanged: (value) {
+              print('value: $value');
+            },
+            validator: (value) {
+              if (value == null) return 'Este campo es requerido';
+              return value.length < 3 ? 'Mínimo de 3 letras' : null;
+            },
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+          ),
+          TextFormField(
+            autofocus: true,
+            initialValue: '',
+            textCapitalization: TextCapitalization.words,
+            decoration: const InputDecoration(
+                hintText: 'Fecha y horario',
+                labelText: 'Fecha y horario',
+                suffixIcon: Icon(
+                  Icons.access_time_filled_outlined,
+                )),
+            onChanged: (value) {
+              print('value: $value');
+            },
+            validator: (value) {
+              if (value == null) return 'Este campo es requerido';
+              return value.length < 3 ? 'Mínimo de 3 letras' : null;
+            },
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+          ),
+          TextFormField(
+            autofocus: true,
+            initialValue: '',
+            textCapitalization: TextCapitalization.words,
+            decoration: const InputDecoration(
+                hintText: 'Máximo de invitados',
+                labelText: 'Invitados',
+                suffixIcon: Icon(
+                  Icons.people,
+                )),
+            onChanged: (value) {
+              print('value: $value');
+            },
+            validator: (value) {
+              if (value == null) return 'Este campo es requerido';
+              return value.length < 3 ? 'Mínimo de 3 letras' : null;
+            },
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+          ),
+          TextFormField(
+            autofocus: true,
+            initialValue: '',
+            textCapitalization: TextCapitalization.words,
+            decoration: const InputDecoration(
+                hintText: 'Indica los detalles',
+                labelText: 'Detalles y requisitos',
+                suffixIcon: Icon(
+                  Icons.list_rounded,
+                )),
+            onChanged: (value) {
+              print('value: $value');
+            },
+            validator: (value) {
+              if (value == null) return 'Este campo es requerido';
+              return value.length < 3 ? 'Mínimo de 3 letras' : null;
+            },
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+          ),
         ]),
       )),
     );

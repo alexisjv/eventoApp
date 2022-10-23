@@ -39,11 +39,12 @@ class AppTheme {
 // Tema Oscuro
   static final ThemeData darkTheme = ThemeData.dark().copyWith(
       primaryColor: primary,
+      textTheme: TextTheme(),
       cardTheme: CardTheme(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       ),
       appBarTheme: const AppBarTheme(color: primary, elevation: 0),
-      scaffoldBackgroundColor: Colors.black);
+      scaffoldBackgroundColor: Colors.grey[900]);
 }
 
 //

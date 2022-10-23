@@ -29,27 +29,27 @@ public class EventoController {
     @PostMapping("create")
     public ResponseEntity<String> saveEvento(
             @RequestParam("name") String name,
-            @RequestParam("type_event") Integer type_event,
+           /* @RequestParam("type_event") Integer type_event,
             @RequestParam("type_site") Integer type_site,
             @RequestParam("type_music") Integer type_music,
             @RequestParam("description") String description,
-            @RequestParam("privacy") Boolean privacy,
-            @RequestParam("imageFile") MultipartFile[] files,
-            @RequestParam("lat") Double lat,
-            @RequestParam("lng") Double lng)
+            @RequestParam("privacy") Boolean privacy,*/
+            @RequestParam("imageFile") MultipartFile[] files)
+          /*  @RequestParam("lat") Double lat,
+            @RequestParam("lng") Double lng)*/
     {
         System.out.println("llegue aca");
         List<String> images = fileService.upload(files);
         Evento evento = new Evento();
-        evento.setName(name);
+        evento.setName(name);/*
         evento.setType_event(type_event);
         evento.setType_music(type_music);
         evento.setType_site(type_site);
         evento.setDescription(description);
-        evento.setPrivacy(privacy);
+        evento.setPrivacy(privacy);*/
         evento.setCoverImage(images.get(0));
-        evento.setLat(lat);
-        evento.setLng(lng);
+       /* evento.setLat(lat);
+        evento.setLng(lng);*/
         Evento savedEvento = eventoService.save(evento);
         fileService.assignImagesToEvent(images, savedEvento.getId());
         return new ResponseEntity<>(HttpStatus.OK);
