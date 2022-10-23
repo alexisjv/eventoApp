@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_evento/providers/evento_provider.dart';
 import 'package:flutter_evento/router/app_routes.dart';
 import 'package:flutter_evento/services/evento_service.dart';
 import 'package:flutter_evento/themes/app_theme.dart';

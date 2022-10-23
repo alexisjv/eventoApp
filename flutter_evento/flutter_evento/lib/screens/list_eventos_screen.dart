@@ -1,11 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_evento/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 import '../models/evento.dart';
+import '../services/evento_service.dart';
+import '../widgets/custom_card.dart';
+import '../widgets/custom_card_image.dart';
 
-class CardScreen extends StatelessWidget {
+class ListEventosScreen extends StatelessWidget {
+  const ListEventosScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<EventoService>(
+      builder: (context, providerData, _) => FutureBuilder(
+        future: providerData.getEventos(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          List<Evento> listEventos = snapshot.data;
+          return ListEventos(listEventos = listEventos);
+        },
+      ),
+    );
+  }
+}
+
+class ListEventos extends StatelessWidget {
   List<Evento> listEventos = [];
 
-  CardScreen(this.listEventos, {super.key});
+  ListEventos(this.listEventos, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +40,10 @@ class CardScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
-            const CustomCard(),
+            /* const CustomCard(),
             const SizedBox(
               height: 10,
-            ),
+            ), */
             if (listEventos.isEmpty)
               const Text('No hay eventos disponibles')
             else
