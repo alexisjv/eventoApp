@@ -1,6 +1,4 @@
 import 'package:flutter_evento/models/models.dart';
-import 'package:flutter_evento/screens/list_eventos_screen.dart';
-
 import '../screens/screens.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +11,11 @@ class AppRoutes {
         name: 'Buscar eventos',
         screen: const ListEventosScreen(),
         icon: Icons.search),
+    MenuOption(
+        route: 'googleMaps',
+        name: 'Mapa',
+        screen: const GoogleMapScreen(),
+        icon: Icons.map),
     MenuOption(
         route: 'listView1',
         name: 'Mis eventos',

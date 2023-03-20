@@ -1,3 +1,4 @@
+export 'package:flutter_evento/screens/google_map_screen.dart';
 export 'package:flutter_evento/screens/list_eventos_screen.dart';
 export 'package:flutter_evento/screens/inputs_screen.dart';
 export 'package:flutter_evento/screens/animated_screen.dart';
