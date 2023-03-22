@@ -39,7 +39,7 @@ class AppTheme {
 // Tema Oscuro
   static final ThemeData darkTheme = ThemeData.dark().copyWith(
       primaryColor: primary,
-      textTheme: TextTheme(),
+      textTheme: const TextTheme(),
       cardTheme: CardTheme(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       ),

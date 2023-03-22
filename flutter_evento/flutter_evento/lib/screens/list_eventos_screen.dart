@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/evento.dart';
 import '../services/evento_service.dart';
-import '../widgets/custom_card.dart';
 import '../widgets/custom_card_image.dart';
 
 class ListEventosScreen extends StatelessWidget {

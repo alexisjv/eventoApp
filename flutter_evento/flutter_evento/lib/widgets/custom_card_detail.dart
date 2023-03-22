@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_evento/themes/app_theme.dart';
 import 'package:flutter_evento/widgets/guests.dart';
 
 class CustomCardDetail extends StatelessWidget {
@@ -25,7 +23,7 @@ class CustomCardDetail extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: TextStyle(color: Colors.indigo, fontSize: 20),
+                style: const TextStyle(color: Colors.indigo, fontSize: 20),
               ),
               const SizedBox(
                 height: 20,
@@ -35,7 +33,7 @@ class CustomCardDetail extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Guests(),
+                          builder: (context) => const Guests(),
                         ));
                   },
                   child: const Text('Asistentes'))

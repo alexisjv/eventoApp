@@ -20,14 +20,14 @@ class Guests extends StatelessWidget {
       "Juan"
     ];
     return Scaffold(
-      appBar: AppBar(title: Text('Asistentes')),
+      appBar: AppBar(title: const Text('Asistentes')),
       body: ListView.separated(
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         itemCount: guestName.length,
         itemBuilder: (context, index) => ListTile(
           title: Text(
             guestName[index],
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.indigo,
             ),
           ),

@@ -14,7 +14,7 @@ class AppRoutes {
     MenuOption(
         route: 'googleMaps',
         name: 'Mapa',
-        screen: const GoogleMapScreen(),
+        screen: const MapScreen(),
         icon: Icons.map),
     MenuOption(
         route: 'listView1',
@@ -50,7 +50,7 @@ class AppRoutes {
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {
     Map<String, Widget Function(BuildContext)> appRoutes = {};
-    appRoutes.addAll({'home': (BuildContext context) => HomeScreen()});
+    appRoutes.addAll({'home': (BuildContext context) => const HomeScreen()});
 
     for (final option in menuOptions) {
       appRoutes.addAll({option.route: (BuildContext context) => option.screen});
