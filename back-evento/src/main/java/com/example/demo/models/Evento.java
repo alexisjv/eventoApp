@@ -23,8 +23,8 @@ public class Evento {
     private Date date;
     private Boolean privacy;*/
     private String coverImage;
-   /* private Double lat;
-    private Double lng;*/
+    private Double lat;
+    private Double lng;
  /*   @ManyToOne
     @JoinColumn(name = "host_id")
     private User host_id;

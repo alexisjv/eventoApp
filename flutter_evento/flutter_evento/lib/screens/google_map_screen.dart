@@ -31,13 +31,12 @@ class GoogleMapScreen extends StatelessWidget {
  */
 
 import 'package:flutter/material.dart';
+import 'package:flutter_evento/screens/filter_screen.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:provider/provider.dart';
 import '../services/evento_service.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
-
-import 'inputs_screen.dart';
 
 class MapScreen extends StatelessWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -47,12 +46,16 @@ class MapScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.search),
+        backgroundColor: Colors.red,
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const InputsScreen()),
+            MaterialPageRoute(builder: (context) => const FilterScreen()),
           );
         },
+      ),
+      appBar: AppBar(
+        title: const Text('Buscar Evento'),
       ),
       body: Consumer<EventoService>(
         builder: (context, providerData, _) => FutureBuilder(

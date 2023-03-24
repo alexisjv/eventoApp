@@ -57,4 +57,15 @@ public class EventoServiceImpl implements EventoService{
     public List<Evento> findNearly(Double lat, Double lng) {
         return eventoRepository.findNearly(lat, lng);
     }
+
+    @Override
+    public Evento create(Evento eventoData, String coverImage) {
+        Evento evento = new Evento();
+        evento.setCoverImage(coverImage);
+        evento.setName(eventoData.getName());
+        evento.setLat(eventoData.getLat());
+        evento.setLng(eventoData.getLng());
+        save(evento);
+        return evento;
+    }
 }

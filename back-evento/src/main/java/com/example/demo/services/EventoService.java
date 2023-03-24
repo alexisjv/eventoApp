@@ -14,4 +14,6 @@ public interface EventoService {
     void delete(Long id);
 
     List<Evento> findNearly(Double lat, Double lng);
+
+    Evento create(Evento eventoData, String coverImage);
 }

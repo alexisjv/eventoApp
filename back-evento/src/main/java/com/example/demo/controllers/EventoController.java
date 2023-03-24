@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -28,30 +29,18 @@ public class EventoController {
 
     @PostMapping("create")
     public ResponseEntity<String> saveEvento(
-            @RequestParam("name") String name,
-           /* @RequestParam("type_event") Integer type_event,
-            @RequestParam("type_site") Integer type_site,
-            @RequestParam("type_music") Integer type_music,
-            @RequestParam("description") String description,
-            @RequestParam("privacy") Boolean privacy,*/
-            @RequestParam("imageFile") MultipartFile[] files)
-          /*  @RequestParam("lat") Double lat,
-            @RequestParam("lng") Double lng)*/
+            @ModelAttribute Evento eventoData,
+            @RequestParam("imageFile") MultipartFile file)
     {
-        System.out.println("llegue aca");
+/*
         List<String> images = fileService.upload(files);
-        Evento evento = new Evento();
-        evento.setName(name);/*
-        evento.setType_event(type_event);
-        evento.setType_music(type_music);
-        evento.setType_site(type_site);
-        evento.setDescription(description);
-        evento.setPrivacy(privacy);*/
-        evento.setCoverImage(images.get(0));
-       /* evento.setLat(lat);
-        evento.setLng(lng);*/
-        Evento savedEvento = eventoService.save(evento);
-        fileService.assignImagesToEvent(images, savedEvento.getId());
+*/
+        System.out.println(eventoData.getName());
+        System.out.println(eventoData.getLat());
+        System.out.println(eventoData.getLng());
+        String coverImage = fileService.upload(file);
+        Evento evento = eventoService.create(eventoData, coverImage);
+        fileService.assignImageToEvent(coverImage, evento.getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

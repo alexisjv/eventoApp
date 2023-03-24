@@ -42,6 +42,8 @@ dependencies:
   flutter_map: ^0.13.0 # otro mapa, por ejemplo OpenStreetMap
   flutter_map_marker_cluster: any # marcadores para los mapas
   geodesy: ^0.3.2 # hace calculos de distancias
+  path_provider: ^2.0.14
+  image_picker: ^0.8.7
 
 
 dev_dependencies:

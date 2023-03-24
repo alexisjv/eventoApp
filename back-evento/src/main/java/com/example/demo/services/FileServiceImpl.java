@@ -9,6 +9,7 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -24,7 +25,7 @@ public class FileServiceImpl implements FileService{
     @Autowired
     private FileRepository fileRepository;
       public static String uploadDirectory = System.getProperty("user.dir")+"/src/main/webapp/uploads";
-    @Override
+   /* @Override
     public List<String> upload(MultipartFile[] files) {
 
         List<String> filenames = new ArrayList<>();
@@ -43,9 +44,32 @@ public class FileServiceImpl implements FileService{
         System.out.println(filenames);
 
         return filenames;
+    }*/
+
+    @Override
+    public String upload(MultipartFile file) {
+        String imagePath = UUID.randomUUID().toString() + "_" + file.getName();
+
+        Path fileNameAndPath = Paths.get(uploadDirectory, imagePath);
+        try {
+            byte[] bytes = file.getBytes();
+            Files.write(fileNameAndPath, bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return imagePath;
+
     }
 
     @Override
+    public void assignImageToEvent(String image, Long id) {
+        Image coverImage = new Image();
+        coverImage.setName(image);
+        coverImage.setEvent_id(id);
+        fileRepository.save(coverImage);
+    }
+
+    /*@Override
     public void assignImagesToEvent(List<String> images, Long event_id) {
         for (String img: images) {
 
@@ -54,7 +78,7 @@ public class FileServiceImpl implements FileService{
             image.setEvent_id(event_id);
             fileRepository.save(image);
         }
-    }
+    }*/
 
     @Override
     public Resource load(String filename) throws MalformedURLException {
