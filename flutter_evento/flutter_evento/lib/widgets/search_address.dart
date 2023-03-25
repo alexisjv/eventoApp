@@ -1,14 +1,14 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:uuid/uuid.dart';
-import '../models/evento.dart';
 import 'package:http/http.dart' as http;
 
-class SearchAddress extends StatefulWidget {
-  const SearchAddress({super.key});
+typedef LocationCallback = void Function(List<double> latLng);
 
+class SearchAddress extends StatefulWidget {
+  final LocationCallback onLocationSelected;
+  const SearchAddress({super.key, required this.onLocationSelected});
   @override
   EventoFormState createState() {
     return EventoFormState();
@@ -16,7 +16,7 @@ class SearchAddress extends StatefulWidget {
 }
 
 class EventoFormState extends State<SearchAddress> {
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
   var uuid = Uuid();
   String _sessionToken = "1234";
   List<dynamic> _placesList = [];
@@ -56,10 +56,6 @@ class EventoFormState extends State<SearchAddress> {
     }
   }
 
-  final _formKey = GlobalKey<FormState>();
-  late File image;
-  Evento evento = Evento(id: 0, name: "", coverImage: "", lat: 0.0, lng: 0.0);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +68,7 @@ class EventoFormState extends State<SearchAddress> {
           children: [
             TextFormField(
               controller: _controller,
-              decoration: InputDecoration(hintText: "Buscar dirección:"),
+              decoration: const InputDecoration(hintText: "Buscar dirección:"),
             ),
             Expanded(
                 child: ListView.builder(
@@ -82,8 +78,20 @@ class EventoFormState extends State<SearchAddress> {
                         onTap: () async {
                           List<Location> locations = await locationFromAddress(
                               _placesList[index]['description']);
+
+                          final Location location = Location(
+                              latitude: locations.last.latitude,
+                              longitude: locations.last.longitude,
+                              timestamp: DateTime.now());
+
                           print(locations.last.latitude);
                           print(locations.last.longitude);
+                          if (widget.onLocationSelected != null) {
+                            widget.onLocationSelected([
+                              locations.last.latitude,
+                              locations.last.longitude
+                            ]);
+                          }
                         },
                         title: Text(_placesList[index]['description']),
                       );

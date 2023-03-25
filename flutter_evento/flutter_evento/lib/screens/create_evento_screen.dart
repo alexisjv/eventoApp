@@ -4,10 +4,9 @@ import 'package:flutter_evento/widgets/search_address.dart';
 import 'package:image_picker/image_picker.dart';
 import '../models/evento.dart';
 import '../services/evento_service.dart';
-import 'package:latlong2/latlong.dart';
 
-class EventoForm extends StatefulWidget {
-  const EventoForm({super.key});
+class CreateEventoScreen extends StatefulWidget {
+  const CreateEventoScreen({super.key});
 
   @override
   EventoFormState createState() {
@@ -15,19 +14,16 @@ class EventoForm extends StatefulWidget {
   }
 }
 
-class EventoFormState extends State<EventoForm> {
+class EventoFormState extends State<CreateEventoScreen> {
   final _formKey = GlobalKey<FormState>();
-  String? _name;
-  double? _lat;
-  double? _lng;
-  String? _coverImage;
   String? adress;
-  TextEditingController _addressController = TextEditingController();
-  List<String> _suggestions = [];
-  List _searchResults = [];
 
   late File image;
   Evento evento = Evento(id: 0, name: "", coverImage: "", lat: 0.0, lng: 0.0);
+  void handleLocationSelected(List<double> latLng) {
+    evento.lat = latLng[0];
+    evento.lng = latLng[1];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +58,8 @@ class EventoFormState extends State<EventoForm> {
                   onPressed: () {
                     showModalBottomSheet(
                       context: context,
-                      builder: (_) => SearchAddress(),
+                      builder: (_) => SearchAddress(
+                          onLocationSelected: handleLocationSelected),
                     );
                   },
                   child: Text('Buscar dirección'),

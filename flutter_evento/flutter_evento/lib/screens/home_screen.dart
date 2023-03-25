@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_evento/router/app_routes.dart';
+import 'package:flutter_evento/screens/screens.dart';
 import 'package:flutter_evento/themes/app_theme.dart';
-import 'package:flutter_evento/widgets/evento_form.dart';
+import '../models/evento.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -33,8 +34,10 @@ class HomeScreen extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
             child: const Icon(Icons.add),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const EventoForm()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CreateEventoScreen()));
             }));
   }
 }
