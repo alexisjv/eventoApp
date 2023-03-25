@@ -1,35 +1,3 @@
-/* import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../services/evento_service.dart';
-import '../widgets/google_maps.dart';
-
-class GoogleMapScreen extends StatelessWidget {
-  const GoogleMapScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<EventoService>(
-      builder: (context, providerData, _) => FutureBuilder(
-        future: providerData.getPosition(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          List<double> latlng = snapshot.data;
-          return GoogleMaps(
-            lat: latlng[0],
-            lng: latlng[1],
-          );
-        },
-      ),
-    );
-  }
-}
- */
-
 import 'package:flutter/material.dart';
 import 'package:flutter_evento/screens/filter_screen.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -45,7 +13,6 @@ class MapScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.search),
         backgroundColor: Colors.red,
         onPressed: () {
           Navigator.push(
@@ -53,6 +20,7 @@ class MapScreen extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const FilterScreen()),
           );
         },
+        child: const Icon(Icons.search),
       ),
       appBar: AppBar(
         title: const Text('Buscar Evento'),

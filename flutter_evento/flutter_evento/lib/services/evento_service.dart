@@ -17,8 +17,6 @@ class EventoService extends ChangeNotifier {
     request.fields['name'] = eventoData.name;
     request.fields['lat'] = eventoData.lat.toString();
     request.fields['lng'] = eventoData.lng.toString();
-    print(eventoData.name);
-    print(eventoData.lat);
 
     // Crear un objeto MultipartFile a partir del archivo File
     final fileStream = http.ByteStream(Stream.castFrom(file.openRead()));
@@ -34,12 +32,9 @@ class EventoService extends ChangeNotifier {
     if (response.statusCode == 200) {
       // Si el servidor responde con un código 200 (OK),
       // puedes procesar la respuesta aquí
-      print(await response.stream.bytesToString());
     } else {
       // Si el servidor responde con un código distinto a 200,
       // debes manejar el error aquí
-      print(
-          'Error al enviar los datos. Código de respuesta: ${response.statusCode}');
     }
   }
 
@@ -60,27 +55,4 @@ class EventoService extends ChangeNotifier {
         desiredAccuracy: LocationAccuracy.low);
     return [position.latitude, position.longitude];
   }
-
-  /*  Future<List<LatLng>> getNearEventos() async {
-    List<double> position = getPosition();
-    List<LatLng> locations = [
-      LatLng(37.7749, -122.4194),
-      LatLng(37.7858, -122.4064),
-      LatLng(37.7775, -122.4162),
-      LatLng(37.7767, -122.3942),
-      LatLng(37.7949, -122.4084),
-    ];
-    final Distance distance = Distance();
-    final LatLng currentPosition = LatLng(position[0], position[1]); // Ubicación actual
-    List<LatLng> filteredLocations = locations
-        .where((location) =>
-            distance.as(
-              LengthUnit.Kilometer,
-              currentPosition,
-              location,
-            ) <=
-            2)
-        .toList();
-    return filteredLocations;
-  } */
 }

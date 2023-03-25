@@ -23,9 +23,7 @@ class FilterScreen extends StatelessWidget {
                 suffixIcon: Icon(
                   Icons.style,
                 )),
-            onChanged: (value) {
-              print('value: $value');
-            },
+            onChanged: (value) {},
             validator: (value) {
               if (value == null) return 'Este campo es requerido';
               return value.length < 3 ? 'Mínimo de 3 letras' : null;
@@ -42,9 +40,7 @@ class FilterScreen extends StatelessWidget {
                 suffixIcon: Icon(
                   Icons.music_note,
                 )),
-            onChanged: (value) {
-              print('value: $value');
-            },
+            onChanged: (value) {},
             validator: (value) {
               if (value == null) return 'Este campo es requerido';
               return value.length < 3 ? 'Mínimo de 3 letras' : null;
@@ -61,9 +57,7 @@ class FilterScreen extends StatelessWidget {
                 suffixIcon: Icon(
                   Icons.location_city,
                 )),
-            onChanged: (value) {
-              print('value: $value');
-            },
+            onChanged: (value) {},
             validator: (value) {
               if (value == null) return 'Este campo es requerido';
               return value.length < 3 ? 'Mínimo de 3 letras' : null;
@@ -80,9 +74,7 @@ class FilterScreen extends StatelessWidget {
                 suffixIcon: Icon(
                   Icons.location_on,
                 )),
-            onChanged: (value) {
-              print('value: $value');
-            },
+            onChanged: (value) {},
             validator: (value) {
               if (value == null) return 'Este campo es requerido';
               return value.length < 3 ? 'Mínimo de 3 letras' : null;
@@ -99,9 +91,7 @@ class FilterScreen extends StatelessWidget {
                 suffixIcon: Icon(
                   Icons.access_time_filled_outlined,
                 )),
-            onChanged: (value) {
-              print('value: $value');
-            },
+            onChanged: (value) {},
             validator: (value) {
               if (value == null) return 'Este campo es requerido';
               return value.length < 3 ? 'Mínimo de 3 letras' : null;

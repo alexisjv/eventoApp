@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_evento/widgets/search_address.dart';
 import 'package:image_picker/image_picker.dart';
 import '../models/evento.dart';
 import '../services/evento_service.dart';
+import 'package:latlong2/latlong.dart';
 
 class EventoForm extends StatefulWidget {
   const EventoForm({super.key});
@@ -19,11 +21,18 @@ class EventoFormState extends State<EventoForm> {
   double? _lat;
   double? _lng;
   String? _coverImage;
+  String? adress;
+  TextEditingController _addressController = TextEditingController();
+  List<String> _suggestions = [];
+  List _searchResults = [];
+
   late File image;
   Evento evento = Evento(id: 0, name: "", coverImage: "", lat: 0.0, lng: 0.0);
 
   @override
   Widget build(BuildContext context) {
+    final eventoService = EventoService();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Editar evento'),
@@ -49,38 +58,17 @@ class EventoFormState extends State<EventoForm> {
                     evento.name = value!;
                   },
                 ),
-                const SizedBox(height: 16.0),
-                TextFormField(
-                  initialValue: evento.lat.toString(),
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(labelText: 'Latitud'),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Por favor ingrese una latitud';
-                    }
-                    return null;
+                ElevatedButton(
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (_) => SearchAddress(),
+                    );
                   },
-                  onSaved: (value) {
-                    if (value != null && value.isNotEmpty) {
-                      evento.lat = double.parse(value);
-                    }
-                  },
+                  child: Text('Buscar dirección'),
                 ),
                 const SizedBox(height: 16.0),
-                TextFormField(
-                  initialValue: evento.lng.toString(),
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(labelText: 'Longitud'),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Por favor ingrese una longitud';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    evento.lng = double.parse(value!);
-                  },
-                ),
+                const SizedBox(height: 16.0),
                 const SizedBox(height: 16.0),
                 ElevatedButton(
                   onPressed: () async {

@@ -44,6 +44,15 @@ dependencies:
   geodesy: ^0.3.2 # hace calculos de distancias
   path_provider: ^2.0.14
   image_picker: ^0.8.7
+  geocoding: ^2.0.0
+  flutter_dotenv: ^5.0.1
+  address_search_field: ^5.0.3
+  google_maps_webservice: ^0.0.19
+  latlong: ^0.6.1
+  uuid: ^3.0.5
+
+
+
 
 
 dev_dependencies:
